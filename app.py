@@ -1,12 +1,4 @@
-# Create the .streamlit directory if it doesn't exist
-!mkdir -p /content/.streamlit
-
-# Write the secrets.toml file with your OpenAI API key
-# Replace YOUR_OPENAI_API_KEY with your actual key
-!echo "OPENAI_API_KEY = \"OPENENAI_API_KEY\"" > /content/.streamlit/secrets.toml # Corrected a typo here
-
-# Now run your Streamlit app code
-# (Your existing Streamlit code follows here)
+# app.py
 
 import openai
 import streamlit as st
@@ -21,7 +13,6 @@ interests = st.text_input("Enter your interests:")
 education = st.text_input("Enter your education background:")
 
 # Get OpenAI key from Streamlit secrets
-# This line will now successfully read from /content/.streamlit/secrets.toml
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 def get_career_advice(skills, interests, education):
@@ -60,4 +51,4 @@ if st.button("Get Career Advice"):
     else:
         st.warning("Please fill all the fields.")
 
-# Removed the second cell which caused the NameError
+
